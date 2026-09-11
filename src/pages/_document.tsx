@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="antialiased">
+      <body className="dark min-h-screen bg-background text-foreground antialiased">
         <Main />
         <NextScript />
       </body>
