@@ -34,6 +34,7 @@
     "eslint-config-next": "16.3.4",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.6",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
   },
   "packageManager": "pnpm@12.3.4"

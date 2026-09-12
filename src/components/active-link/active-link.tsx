@@ -12,23 +12,15 @@ export function ActiveLink({
 }: ActiveLinkProps) {
   const router = useRouter();
 
-  const currentPath = router.asPath.split("?")[0];
-
-  const hrefPath =
-    typeof href === "string" ? href : (href.pathname?.toString() ?? "");
-
-  const isCurrentLink =
-    hrefPath === "/"
-      ? currentPath === "/"
-      : currentPath === hrefPath || currentPath.startsWith(`${hrefPath}/`);
+  const isCurrentLink = router.asPath === href || router.asPath === rest.as;
 
   return (
     <Link
       href={href}
       {...rest}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-primary",
-        isCurrentLink ? "text-blue-500" : "text-muted-foreground",
+        "text-action-sm transition-colors hover:text-blue-200",
+        isCurrentLink ? "text-blue-500" : "text-gray-100",
         className
       )}
     >
