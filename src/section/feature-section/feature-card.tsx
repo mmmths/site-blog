@@ -36,7 +36,7 @@ export function FeatureCard({
             {tag}
           </span>
 
-          <h2 className="text-heading-lg text-gray-100">{title}</h2>
+          <h2 className="text-heading-lg text-gray-100 font-sans">{title}</h2>
 
           {featured && (
             <Link

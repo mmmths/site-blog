@@ -1,4 +1,6 @@
 import { Inter } from "next/font/google";
+import { PT_Sans_Caption } from "next/font/google";
+
 import { Footer } from "../footer";
 import { Header } from "../header";
 
@@ -6,15 +8,24 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-const fontInter = Inter({ subsets: ["latin"] });
+const fontInter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter"
+});
 
+const ptSansCaption = PT_Sans_Caption({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-sans"
+});
 export function Layout({ children }: LayoutProps) {
   return (
     <div
-      className={`${fontInter} relative flex min-h-screen flex-col bg-gray-700`}
+      className={`${fontInter} ${ptSansCaption} relative flex min-h-screen flex-col bg-gray-700 font-inter`}
     >
       <Header />
-      <main className="flex-1 flex flex-col mb-12">{children}</main>
+      <main className="flex-1 flex flex-col mb-12 mt-10">{children}</main>
       <Footer />
     </div>
   );
