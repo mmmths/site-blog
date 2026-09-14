@@ -9,31 +9,32 @@ export type CustomerStory = {
   };
 };
 
-type CustomerStoryProps = {
-  testimonial: CustomerStory;
-};
-
-export function CustomerStoryCard({ testimonial }: CustomerStoryProps) {
+export function CustomerStoryCard({
+  customerStory
+}: {
+  customerStory: CustomerStory;
+}) {
   return (
-    <div className="flex flex-col justify-between gap-8 rounded-lg border border-gray-500 p-6 md:p-10">
-      <p className="text-body-md italic text-gray-200">{testimonial.content}</p>
+    <div className="flex flex-col gap-6 rounded-lg bg-gray-500 p-6 md:p-12">
+      <p className="text-balance text-gray-200">{customerStory.content}</p>
 
       <div className="flex items-center gap-3">
-        <Image
-          src={testimonial.author.avatar}
-          alt={testimonial.author.name}
-          width={40}
-          height={40}
-          className="rounded-full object-cover"
-        />
+        <div className="relative h-10 w-10 overflow-hidden rounded-full">
+          <Image
+            src={customerStory.author.avatar}
+            alt={customerStory.author.name}
+            fill
+            className="object-cover"
+          />
+        </div>
 
         <div className="flex flex-col">
-          <strong className="text-body-sm text-gray-100">
-            {testimonial.author.name}
+          <strong className="text-sm text-gray-200">
+            {customerStory.author.name}
           </strong>
 
-          <span className="text-body-xs text-gray-300">
-            {testimonial.author.role}
+          <span className="text-xs text-gray-300">
+            {customerStory.author.role}
           </span>
         </div>
       </div>

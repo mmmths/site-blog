@@ -38,7 +38,7 @@ export function CustomerStorySection() {
           {testimonials.map((testimonial) => (
             <CustomerStoryCard
               key={testimonial.author.name}
-              testimonial={testimonial}
+              customerStory={testimonial}
             />
           ))}
         </div>
