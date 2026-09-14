@@ -1,8 +1,7 @@
-import { Inter } from "next/font/google";
-import { PT_Sans_Caption } from "next/font/google";
+import { Inter, PT_Sans_Caption } from "next/font/google";
 
-import { Footer } from "../footer";
-import { Header } from "../header";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 type LayoutProps = {
   children: React.ReactNode;
