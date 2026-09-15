@@ -3,40 +3,56 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-export function PostCard() {
+type Author = {
+  name: string;
+  avatar: string;
+};
+
+type PostCardProps = {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  author: Author;
+};
+
+export function PostCard({
+  slug,
+  title,
+  description,
+  date,
+  image,
+  author
+}: PostCardProps) {
   return (
     <Link
-      href={"/blog/"}
+      href={`/blog/${slug}`}
       className={cn(
-        "w-full max-w-2xl rounded-3xl",
+        "w-full max-w-2xl rounded-[12px]",
         "border-[1px] border-gray-400 bg-gray-600 overflow-hidden",
         "transition-all duration-300 hover:border-[1px] hover:border-blue-300"
       )}
     >
       <div className="p-2 rounded-md overflow-hidden">
         <div className="relative">
-          image container
-          <div className="absolute top-0 right-0 px-3 py-1">
-            <span className="text-gray-300 text-body-xs">20/12/2024</span>
+          <div className="absolute top-0 right-0 px-3 py-1 bg-gray-600 backdrop-blur-sm rounded-bl-[10px]">
+            <span className="text-gray-300 text-body-xs">{date}</span>
           </div>
           <Image
-            src={`/assets/first-post.png`}
+            src={image}
             alt=""
             width={288}
             height={144}
-            className="w-full h-40 object-cover object-center"
+            className="w-full h-40 object-cover object-center rounded-t-[8px]"
           />
         </div>
         <div className={cn("px-2 mt-4 space-y-4")}>
           <h2 className="text-heading-sm text-gray-100 line-clamp-3">
-            Transformando seu negócio em uma loja virtual
+            {title}
           </h2>
           <p className="text-gray-300 text-body-sm line-clamp-3">
-            Se você está buscando uma maneira simples e eficaz de vender seus
-            produtos online, o Site.Set é a solução perfeita para você. Criar
-            uma loja virtual de sucesso nunca foi tão fácil. Com nossa
-            plataforma intuitiva, você pode criar um site profissional para sua
-            loja em minutos, sem precisar de conhecimentos técnicos.
+            {description}
           </p>
           <div className="flex items-center gap-3 border-t border-gray-400 py-4">
             <div
@@ -46,13 +62,13 @@ export function PostCard() {
               )}
             >
               <Image
-                src={`/Ellipse5.svg`}
+                src={author.avatar}
                 alt=""
                 fill
                 className="object-cover rounded-md"
               />
             </div>
-            <span className="text-body-sm text-gray-300">Aspen Dokidis</span>
+            <span className="text-body-sm text-gray-300">{author.name}</span>
           </div>
         </div>
       </div>
