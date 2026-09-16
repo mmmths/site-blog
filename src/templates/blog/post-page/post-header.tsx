@@ -22,7 +22,7 @@ export function PostHeader({ image, title, date, author }: PostHeaderProps) {
         </h1>
         <div className="flex items-center gap-3">
           <Image
-            src={author.avatar}
+            src={author.avatar.trim()}
             alt={author.name}
             width={40}
             height={40}

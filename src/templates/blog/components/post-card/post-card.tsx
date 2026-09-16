@@ -50,7 +50,7 @@ export function PostCard({ post }: PostCardProps) {
               )}
             >
               <Image
-                src={author.avatar}
+                src={author.avatar.trim()}
                 alt={author.name}
                 fill
                 className="object-cover rounded-md"
