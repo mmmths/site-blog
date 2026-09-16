@@ -1,11 +1,13 @@
 import Image from "next/image";
 
-type PostContainerPops = {
-  image: string;
-  title: string;
+type PostContainerProps = {
+  post: {
+    image: string;
+    title: string;
+  };
 };
 
-export function PostContainer({ image, title }: PostContainerPops) {
+export function PostContainer({ post: { image, title } }: PostContainerProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-12">
       <article className="bg-gray-600 rounded-lg overflow-hidden border-gray-400 border-[1px]">

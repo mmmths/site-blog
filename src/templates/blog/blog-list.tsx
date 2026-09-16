@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
+import { allPosts } from "contentlayer/generated";
+
 import { Search } from "@/components/search";
+import { EmptyPosts } from "./components/empty-posts";
 import { PostCard } from "./components/post-card";
 import { PostGridCard } from "./components/post-grid-card";
-import { allPosts } from "contentlayer/generated";
-import { Inbox } from "lucide-react";
 
 export function BlogList() {
   const router = useRouter();
-  const query = router.query.q as string;
+  const query = typeof router.query.q === "string" ? router.query.q.trim() : "";
 
   const pageTitle = query
     ? `Resultados de busca para "${query}"`
@@ -44,7 +45,7 @@ export function BlogList() {
               key={post._id}
               title={post.title}
               description={post.description}
-              date={new Date(post.date).toLocaleDateString("pt-br")}
+              date={new Date(post.date).toLocaleDateString("pt-BR")}
               slug={post.slug}
               image={post.image.trim()}
               author={{
@@ -55,14 +56,7 @@ export function BlogList() {
           ))}
         </PostGridCard>
       )}
-      {!hasPosts && (
-        <div className="container px-8">
-          <div className="flex flex-col items-center justify-center gap-8 border-dashed border-2 border-gray-300 p-8 md:p-12 rounded-lg">
-            <Inbox className="h-12 w-12 text-cyan-100" />
-            <p className="text-gray-100 text-center">Nenhum post encontrado</p>
-          </div>
-        </div>
-      )}
+      {!hasPosts && <EmptyPosts />}
     </div>
   );
 }

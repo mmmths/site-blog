@@ -18,6 +18,10 @@ export default function PostPage() {
     post.slug.toLowerCase().includes(slug.toLowerCase())
   );
 
+  if (!post) {
+    return null;
+  }
+
   return (
     <main className="mt-32 text-gray-100">
       <Breadcrumb>
@@ -32,11 +36,11 @@ export default function PostPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <span className="text-blue-200 text-action-sm">{post?.title}</span>
+            <span className="text-blue-200 text-action-sm">{post.title}</span>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <PostContainer image={post?.image ?? ""} title={post?.title ?? ""} />
+      <PostContainer post={post} />
     </main>
   );
 }
