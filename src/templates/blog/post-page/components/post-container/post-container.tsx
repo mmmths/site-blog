@@ -1,7 +1,7 @@
 import type { Post } from "contentlayer/generated";
 
-import { PostHeader } from "./post-header";
-import { PostShare } from "./post-share";
+import { PostHeader } from "../post-header";
+import { PostShare } from "../post-share";
 
 type PostContainerProps = {
   post: Post;

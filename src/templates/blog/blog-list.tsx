@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
 import { allPosts } from "contentlayer/generated";
 
-import { Search } from "@/components/search";
-import { EmptyPosts } from "./components/empty-posts";
-import { PostCard } from "./components/post-card";
-import { PostGridCard } from "./components/post-grid-card";
+import { BlogHeader } from "./components/blog-header";
+import { BlogResults } from "./components/blog-results";
 
 export function BlogList() {
   const router = useRouter();
@@ -20,32 +18,10 @@ export function BlogList() {
       )
     : allPosts;
 
-  const hasPosts = posts.length > 0;
-
   return (
-    <div className="flex flex-col py-24 flex-grow h-full">
-      <header className="pb-14">
-        <div className="container space-y-6 flex flex-col items-start justify-between md:flex-row md:items-end lg:items-end">
-          <div className="flex flex-col gap-4 md:px-0">
-            <span className="text-body-tag text-cyan-100 w-fit rounded-md text-center md:text-left py-2 px-4 bg-cyan-300">
-              BLOG
-            </span>
-            <h1 className="text-balance text-start md:text-left text-heading-lg md:text-heading-xl max-w-2xl text-gray-100">
-              {pageTitle}
-            </h1>
-          </div>
-          <Search />
-        </div>
-      </header>
-
-      {hasPosts && (
-        <PostGridCard>
-          {posts.map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
-        </PostGridCard>
-      )}
-      {!hasPosts && <EmptyPosts />}
+    <div className="flex h-full flex-grow flex-col py-24">
+      <BlogHeader title={pageTitle} />
+      <BlogResults posts={posts} />
     </div>
   );
 }

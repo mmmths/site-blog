@@ -1,7 +1,7 @@
 import type { Post } from "contentlayer/generated";
 
-import { PostBreadcrumb } from "./post-breadcrumb";
-import { PostContainer } from "./post-container";
+import { PostBreadcrumb } from "./components/post-breadcrumb";
+import { PostContainer } from "./components/post-container";
 
 type PostPageProps = {
   post: Post;
