@@ -41,18 +41,7 @@ export function BlogList() {
       {hasPosts && (
         <PostGridCard>
           {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              title={post.title}
-              description={post.description}
-              date={new Date(post.date).toLocaleDateString("pt-BR")}
-              slug={post.slug}
-              image={post.image.trim()}
-              author={{
-                avatar: post.author.avatar,
-                name: post.author.name
-              }}
-            />
+            <PostCard key={post._id} post={post} />
           ))}
         </PostGridCard>
       )}

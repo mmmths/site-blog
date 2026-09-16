@@ -1,30 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Post } from "contentlayer/generated";
 
 import { cn } from "@/lib/utils";
 
-type Author = {
-  name: string;
-  avatar: string;
-};
-
 type PostCardProps = {
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-  date: string;
-  author: Author;
+  post: Post;
 };
 
-export function PostCard({
-  slug,
-  title,
-  description,
-  date,
-  image,
-  author
-}: PostCardProps) {
+export function PostCard({ post }: PostCardProps) {
+  const { slug, title, description, image, date, author } = post;
+
   return (
     <Link
       href={`/blog/${slug}`}
@@ -37,14 +23,16 @@ export function PostCard({
       <div className="flex flex-1 flex-col overflow-hidden rounded-md p-2">
         <div className="relative">
           <div className="absolute top-0 right-0 px-3 py-1 bg-gray-600 backdrop-blur-sm rounded-bl-[10px]">
-            <span className="text-gray-300 text-body-xs">{date}</span>
+            <span className="text-gray-300 text-body-xs">
+              {new Date(date).toLocaleDateString("pt-BR")}
+            </span>
           </div>
           <Image
-            src={image}
+            src={image.trim()}
             alt={title}
             width={288}
             height={144}
-            className="w-full h-40 object-cover object-center rounded-t-[8px]"
+            className="w-full h-40 object-cover object-center rounded-[8px]"
           />
         </div>
         <div className={cn("mt-4 flex flex-1 flex-col gap-4 px-2")}>
