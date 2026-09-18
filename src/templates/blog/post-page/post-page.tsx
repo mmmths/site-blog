@@ -10,7 +10,7 @@ type PostPageProps = {
 export function PostPage({ post }: PostPageProps) {
   return (
     <main className="mt-32 text-gray-100">
-      <div className="container space-y-8">
+      <div className="container space-y-12 px-4 md:px-8">
         <PostBreadcrumb title={post.title} />
         <PostContainer post={post} />
       </div>

@@ -17,8 +17,8 @@ export function PostHeader({ image, title, date, author }: PostHeaderProps) {
       <figure className="relative aspect-[16/7] w-full overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" priority />
       </figure>
-      <header className="p-4 md:p-6 lg:p-12 pb-0">
-        <h1 className=" mb-6 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
+      <header className="p-4 md:p-6 lg:p-12 pb-0 mt-8">
+        <h1 className=" mb-8 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
           {title}
         </h1>
         <Avatar.Container>

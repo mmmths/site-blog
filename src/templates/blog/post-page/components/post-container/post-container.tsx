@@ -1,7 +1,7 @@
 import type { Post } from "contentlayer/generated";
-
 import { PostHeader } from "../post-header";
 import { PostShare } from "../post-share";
+import { Markdown } from "@/components/markdown";
 
 type PostContainerProps = {
   post: Post;
@@ -17,6 +17,9 @@ export function PostContainer({ post }: PostContainerProps) {
           date={new Date(post.date).toLocaleDateString("pt-BR")}
           author={post.author}
         />
+        <div className="prose prove-invert max-w-none px-4 mt-12 md:px-6 lg:px-12">
+          <Markdown content={post.body.raw} />
+        </div>
       </article>
       <PostShare slug={post.slug} />
     </div>
