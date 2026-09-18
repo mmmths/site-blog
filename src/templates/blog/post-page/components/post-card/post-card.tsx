@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Post } from "contentlayer/generated";
 
 import { cn } from "@/lib/utils";
+import { Avatar } from "@/components/avatar";
 
 type PostCardProps = {
   post: Post;
@@ -43,19 +44,12 @@ export function PostCard({ post }: PostCardProps) {
             {description}
           </p>
           <div className="mt-auto flex items-center gap-3 border-t border-gray-400 py-4">
-            <div
-              className={cn(
-                "relative h-5 w-5 md:h-6 md:w-6 overflow-hidden",
-                "rounded-full border-blue-200 border-[1px]"
-              )}
-            >
-              <Image
-                src={author.avatar.trim()}
-                alt={author.name}
-                fill
-                className="object-cover rounded-md"
-              />
-            </div>
+            <Avatar.Container>
+              <Avatar.Image src={author.avatar} alt={author.name} />
+              <Avatar.Content>
+                <Avatar.Title>{author.name} </Avatar.Title>
+              </Avatar.Content>
+            </Avatar.Container>
             <span className="text-body-sm text-gray-300">{author.name}</span>
           </div>
         </div>

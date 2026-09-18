@@ -22,7 +22,7 @@ export function PostHeader({ image, title, date, author }: PostHeaderProps) {
           {title}
         </h1>
         <Avatar.Container>
-          <Avatar.Image src={author.avatar.trim()} alt={title} />
+          <Avatar.Image src={author.avatar.trim()} alt={title} size="sm" />
           <Avatar.Content>
             <Avatar.Title>{author.name}</Avatar.Title>
             <Avatar.Description>

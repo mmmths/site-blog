@@ -21,7 +21,7 @@ export function PostContainer({ post }: PostContainerProps) {
           <Markdown content={post.body.raw} />
         </div>
       </article>
-      <PostShare slug={post.slug} />
+      <PostShare post={post} />
     </div>
   );
 }
