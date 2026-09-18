@@ -1,3 +1,4 @@
+import { Avatar } from "@/components/avatar";
 import Image from "next/image";
 
 type PostHeaderProps = {
@@ -16,23 +17,20 @@ export function PostHeader({ image, title, date, author }: PostHeaderProps) {
       <figure className="relative aspect-[16/7] w-full overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" priority />
       </figure>
-      <header className="space-y-8 px-6 py-8 md:px-12 md:py-10">
-        <h1 className="max-w-3xl text-heading-lg text-gray-100 md:text-heading-xl">
+      <header className="p-4 md:p-6 lg:p-12 pb-0">
+        <h1 className=" mb-6 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
           {title}
         </h1>
-        <div className="flex items-center gap-3">
-          <Image
-            src={author.avatar.trim()}
-            alt={author.name}
-            width={40}
-            height={40}
-            className="rounded-full border border-blue-200 object-cover"
-          />
-          <div>
-            <p className="text-body-sm text-gray-200">{author.name}</p>
-            <p className="text-body-xs text-gray-300">Publicado em {date}</p>
-          </div>
-        </div>
+        <Avatar.Container>
+          <Avatar.Image src={author.avatar.trim()} alt={title} />
+          <Avatar.Content>
+            <Avatar.Title>{author.name}</Avatar.Title>
+            <Avatar.Description>
+              Publicado em
+              <time dateTime={date}> {date}</time>
+            </Avatar.Description>
+          </Avatar.Content>
+        </Avatar.Container>
       </header>
     </>
   );
