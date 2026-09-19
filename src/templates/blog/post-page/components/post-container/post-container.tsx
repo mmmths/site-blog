@@ -9,7 +9,7 @@ type PostContainerProps = {
 
 export function PostContainer({ post }: PostContainerProps) {
   return (
-    <div className="container grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-12">
+    <div className="container grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-12">
       <article className="overflow-hidden rounded-lg border border-gray-400 bg-gray-600">
         <PostHeader
           image={post.image}
