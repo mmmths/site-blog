@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
-import { allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 
 import { BlogHeader } from "./components/blog-header";
 import { BlogResults } from "./components/blog-results";
 
-export function BlogList() {
+export type BlogListProps = {
+  posts: Post[];
+};
+
+export function BlogList({ posts }: BlogListProps) {
   const router = useRouter();
   const query = typeof router.query.q === "string" ? router.query.q.trim() : "";
 
@@ -12,16 +16,16 @@ export function BlogList() {
     ? `Resultados de busca para "${query}"`
     : "Dicas e estratégias para impulsionar seu negócio";
 
-  const posts = query
-    ? allPosts.filter((post) =>
+  const postList = query
+    ? posts.filter((post) =>
         post.title.toLowerCase().includes(query.toLowerCase())
       )
-    : allPosts;
+    : posts;
 
   return (
     <div className="flex h-full flex-grow flex-col py-24">
       <BlogHeader title={pageTitle} />
-      <BlogResults posts={posts} />
+      <BlogResults posts={postList} />
     </div>
   );
 }

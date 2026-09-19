@@ -20,7 +20,7 @@ export function PostShare({ post }: PostShareProps) {
     <aside className="w-full min-w-0 space-y-6">
       <div className="w-full rounded-lg bg-gray-700 p-4 md:p-6">
         <h2 className="mb-4 text-heading-xs text-gray-100">Compartilhar</h2>
-        <div className="flex w-full flex-col gap-3">
+        <div className="space-y-3">
           {shareButtons.map((provider) => (
             <button
               type="button"

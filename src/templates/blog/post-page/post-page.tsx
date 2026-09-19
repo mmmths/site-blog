@@ -3,7 +3,7 @@ import type { Post } from "contentlayer/generated";
 import { PostBreadcrumb } from "./components/post-breadcrumb";
 import { PostContainer } from "./components/post-container";
 
-type PostPageProps = {
+export type PostPageProps = {
   post: Post;
 };
 
