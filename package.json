@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "contentlayer build || node -e \"if (!require('fs').existsSync('.contentlayer/generated/index.mjs')) process.exit(1)\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
