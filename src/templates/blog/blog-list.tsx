@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
 import { Post } from "contentlayer/generated";
+import { useSearchParams } from "next/navigation";
 
 import { BlogHeader } from "./components/blog-header";
 import { BlogResults } from "./components/blog-results";
@@ -9,8 +10,8 @@ export type BlogListProps = {
 };
 
 export function BlogList({ posts }: BlogListProps) {
-  const router = useRouter();
-  const query = typeof router.query.q === "string" ? router.query.q.trim() : "";
+  const searchParams = useSearchParams();
+  const query = searchParams?.get("q") ?? "";
 
   const pageTitle = query
     ? `Resultados de busca para "${query}"`

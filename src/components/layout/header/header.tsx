@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 import { Logo } from "../../logo";
@@ -19,7 +18,6 @@ export function Header() {
             <ActiveLink href="/">Home</ActiveLink>
             <ActiveLink href="/blog">Blog</ActiveLink>
             <Link
-              onClick={() => console.log("cliquei")}
               href="/get-started"
               className={buttonVariants({ variant: "secondary" })}
             >

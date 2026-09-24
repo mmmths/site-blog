@@ -1,27 +1,29 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
-import { useDebounce } from "@/hooks/use-debounce";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SearchInput } from "./search-input";
+import { useDebounce } from "@/hooks/use-debounce";
 
 export function Search() {
   const router = useRouter();
-  const query = typeof router.query.q === "string" ? router.query.q : "";
+  const searchParams = useSearchParams();
+  const query = searchParams?.get("q") ?? "";
 
   const [search, setSearch] = useState(query);
   const debouncedSearch = useDebounce(search, 400);
 
   useEffect(() => {
-    if (!router.isReady) return;
     if (debouncedSearch === query) return;
 
+    const nextUrl = new URLSearchParams();
+
+    if (debouncedSearch) {
+      nextUrl.set("q", debouncedSearch);
+    }
+
     void router.replace(
-      {
-        pathname: "/blog",
-        query: debouncedSearch ? { q: debouncedSearch } : {}
-      },
-      undefined,
-      { shallow: true, scroll: false }
+      nextUrl.size > 0 ? `/blog?${nextUrl.toString()}` : "/blog",
+      { scroll: false }
     );
   }, [debouncedSearch, query, router]);
 
@@ -32,18 +34,18 @@ export function Search() {
 
     if (!value) {
       setSearch("");
+      void router.replace("/blog", { scroll: false });
       return;
     }
 
     setSearch(value);
-    void router.push({
-      pathname: "/blog",
-      query: { q: value }
-    });
+    const nextUrl = new URLSearchParams({ q: value });
+    void router.push(`/blog?${nextUrl.toString()}`);
   }
 
   function handleResetInput() {
     setSearch("");
+    void router.replace("/blog", { scroll: false });
   }
 
   return (
