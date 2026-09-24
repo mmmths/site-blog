@@ -2,7 +2,7 @@ import { cn } from "cn";
 import Link from "next/link";
 
 import { ArrowRight, Store } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 
 export function CallToAction() {
   return (

@@ -2,7 +2,7 @@ import { cn } from "cn";
 import type { Post } from "contentlayer/generated";
 
 import { useShare } from "@/hooks";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 
 type PostShareProps = {
   post: Post;
