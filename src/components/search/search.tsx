@@ -1,16 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { SearchInput } from "./search-input";
 import { useDebounce } from "@/hooks/use-debounce";
 
 export function Search() {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams?.get("q") ?? "";
+  const hasQuery = !!searchParams?.has("q");
 
   const [search, setSearch] = useState(query);
   const debouncedSearch = useDebounce(search, 400);
+
+  useEffect(() => {
+    if (hasQuery) {
+      inputRef.current?.focus();
+    }
+  }, [hasQuery]);
 
   useEffect(() => {
     if (debouncedSearch === query) return;
@@ -54,6 +62,7 @@ export function Search() {
         value={search}
         onChange={setSearch}
         onClear={handleResetInput}
+        inputRef={inputRef}
       />
     </form>
   );

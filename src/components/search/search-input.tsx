@@ -1,19 +1,25 @@
-import { CircleX, SearchIcon } from "lucide-react";
-
 import { cn } from "@/lib/utils";
+import { CircleX, SearchIcon } from "lucide-react";
 
 type SearchInputProps = {
   value: string;
   onChange: (value: string) => void;
   onClear: () => void;
+  inputRef: React.RefObject<HTMLInputElement | null>;
 };
 
-export function SearchInput({ value, onClear, onChange }: SearchInputProps) {
+export function SearchInput({
+  value,
+  onClear,
+  onChange,
+  inputRef
+}: SearchInputProps) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value;
 
     onChange(value);
   }
+
   return (
     <div className="group relative w-full md:w-60">
       <SearchIcon
@@ -25,6 +31,7 @@ export function SearchInput({ value, onClear, onChange }: SearchInputProps) {
         )}
       />
       <input
+        ref={inputRef}
         type="search"
         aria-label="Buscar posts"
         placeholder="Search"
