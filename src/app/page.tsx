@@ -8,7 +8,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Site.set",
     description: "Venda seus produtos como afiliado em um único lugar",
-    url: "https://site-blog-phi-lyart.vercel.app/"
+    url: "https://site-blog-phi-lyart.vercel.app/og-image.png",
+    siteName: "Site.set",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "https://site-blog-phi-lyart.vercel.app/og-image.png",
+        width: 800,
+        height: 600,
+        alt: "Site.set"
+      }
+    ]
   }
 };
 
